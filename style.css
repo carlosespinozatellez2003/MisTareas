@@ -1,0 +1,184 @@
+/* RESET BÁSICO Y VARIABLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0f172a;       /* Azul oscuro para Header y Hero */
+    --accent-color: #0d9488;        /* Verde azulado para botones/detalles */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bg-color: #f8fafc;            /* Fondo general claro */
+    --card-bg: #ffffff;             /* Fondo blanco para las tarjetas */
+    --text-color: #1e293b;          /* Texto principal */
+    --text-muted: #64748b;          /* Texto secundario */
+    --border-radius: 12px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ENCABEZADO */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--accent-color);
+}
+
+/* HERO BANNER */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #ffffff;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* CONTENEDOR DEL CATÁLOGO */
+.catalog-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.catalog-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+/* GRID DE PRODUCTOS (Adaptable a cualquier pantalla) */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.8rem;
+}
+
+/* TARJETAS DE PRODUCTO (.catalog-item) */
+.catalog-item {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.catalog-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* IMAGEN DEL PRODUCTO */
+.catalog-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+/* TÍTULO/MARCA DEL PRODUCTO */
+.catalog-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+/* DESCRIPCIÓN */
+.catalog-item p:nth-of-type(1) {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Mantiene la alineación del precio */
+}
+
+/* PRECIO */
+.catalog-item p:nth-of-type(2) {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background-color: #f1f5f9;
+    padding: 0.4rem;
+    border-radius: 6px;
+}
+
+/* PIE DE PÁGINA */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    color: #94a3b8;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+}
+/* ESTILO DEL RECUADRO DEL PRECIO */
+.btn-precio {
+    display: block;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    background-color: #f1f5f9;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer; /* <--- Muestra el cursor de la manito */
+    transition: all 0.2s ease-in-out;
+}
+
+/* EFECTO AL PASAR EL MOUSE POR ENCIMA (HOVER) */
+.btn-precio:hover {
+    background-color: #2563eb; /*  <--- Color azul */
+    color: #ffffff;            /*  <--- Texto en blanco para buen contraste */
+}
+
+/* EFECTO AL MOMENTO EXACTO DE DAR CLIC (ACTIVE) */
+.btn-precio:active {
+    background-color: #1d4ed8; /* <--- Azul un poco más oscuro al presionar */
+    transform: scale(0.98);    /* <--- Pequeño efecto de pulsación */
+}
