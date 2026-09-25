@@ -1,0 +1,408 @@
+/* ==========================================
+   1. RESET Y ESTILOS GENERALES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   2. ENCABEZADO (HEADER & NAV)
+   ========================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    border-bottom: 1px solid #eaeaea;
+    background-color: #ffffff;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #000000;
+}
+
+/* ==========================================
+   3. SECCIÓN PRINCIPAL DE PRODUCTO EN 2 COLUMNAS
+   ========================================== */
+.producto {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: flex-start;
+}
+
+.imagen-producto {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* --- Galería de Miniaturas y Visor Principal --- */
+.galeria-pure-css {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Oculta los radios reales */
+.galeria-pure-css input[type="radio"] {
+    display: none;
+}
+
+/* Columna lateral con miniaturas (Thumbnails) */
+.miniaturas-laterales {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumb {
+    width: 65px;
+    height: 65px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+}
+
+.thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.thumb:hover {
+    border-color: #a0aec0;
+}
+
+/* Recuadro contenedor de la foto grande */
+.contenedor-galeria-imagen {
+    flex: 1;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- CONTENEDOR DE IMÁGENES Y ZOOM POR CUADRÍCULA 3x3 --- */
+.contenedor-imagenes {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+/* Celdas invisibles que detectan el puntero */
+.zona {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+
+.foto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Permite interacción con las zonas invisibles */
+    transform-origin: center center;
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-out, transform-origin 0.2s ease-out;
+}
+
+/* Nivel de aumento al posar el mouse */
+.contenedor-imagenes:hover .foto {
+    transform: scale(2);
+}
+
+/* --- PUNTOS DE ORIGEN SEGÚN LA ZONA EXPLORADA --- */
+
+/* Fila Superior */
+.z-1:hover ~ .foto { transform-origin: top left; }
+.z-2:hover ~ .foto { transform-origin: top center; }
+.z-3:hover ~ .foto { transform-origin: top right; }
+
+/* Fila Central */
+.z-4:hover ~ .foto { transform-origin: center left; }
+.z-5:hover ~ .foto { transform-origin: center center; }
+.z-6:hover ~ .foto { transform-origin: center right; }
+
+/* Fila Inferior */
+.z-7:hover ~ .foto { transform-origin: bottom left; }
+.z-8:hover ~ .foto { transform-origin: bottom center; }
+.z-9:hover ~ .foto { transform-origin: bottom right; }
+
+/* --- LÓGICA DE SELECCIÓN CON CSS (:checked y selector ~) --- */
+
+/* Borde rojo en la miniatura activa */
+#img-1:checked ~ .miniaturas-laterales .thumb-1,
+#img-2:checked ~ .miniaturas-laterales .thumb-2,
+#img-3:checked ~ .miniaturas-laterales .thumb-3,
+#img-4:checked ~ .miniaturas-laterales .thumb-4,
+#img-5:checked ~ .miniaturas-laterales .thumb-5 {
+    border: 2px solid #ff0000;
+}
+
+/* Visibilidad de la foto seleccionada */
+#img-1:checked ~ .contenedor-galeria-imagen .foto-1,
+#img-2:checked ~ .contenedor-galeria-imagen .foto-2,
+#img-3:checked ~ .contenedor-galeria-imagen .foto-3,
+#img-4:checked ~ .contenedor-galeria-imagen .foto-4,
+#img-5:checked ~ .contenedor-galeria-imagen .foto-5 {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================
+   4. INFORMACIÓN DEL PRODUCTO
+   ========================================== */
+.informacion {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.informacion h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #111111;
+}
+
+.informacion .modelo {
+    font-size: 18px;
+    color: #555555;
+    margin-top: 4px;
+}
+
+.informacion .codigo {
+    font-size: 13px;
+    color: #888888;
+    margin-bottom: 20px;
+}
+
+.informacion p {
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.informacion hr {
+    border: 0;
+    border-top: 1px solid #eaeaea;
+    margin: 20px 0;
+}
+
+.precio-titulo {
+    font-size: 12px;
+    font-weight: 700;
+    color: #777777;
+    letter-spacing: 0.5px;
+}
+
+.precio {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 25px;
+}
+
+.Agregar-carrito,
+.boton-comprar {
+    width: 100%;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+}
+
+.Agregar-carrito {
+    background-color: #4a5568;
+    color: #ffffff;
+    border: none;
+}
+
+.Agregar-carrito:hover {
+    background-color: #2d3748;
+}
+
+.boton-comprar {
+    background-color: transparent;
+    color: #2d3748;
+    border: 1.5px solid #2d3748;
+}
+
+.boton-comprar:hover {
+    background-color: #f7fafc;
+}
+
+/* ==========================================
+   5. SECCIÓN DE DETALLES Y ACORDEONES
+   ========================================== */
+.detalles {
+    max-width: 1200px;
+    margin: 60px auto 20px auto;
+    padding: 0 20px;
+}
+
+.detalles h2 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    color: #222222;
+}
+
+details {
+    border-bottom: 1px solid #eaeaea;
+    padding: 16px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detalles details {
+    max-width: 100%;
+}
+
+summary {
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #111111;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: '▼';
+    font-size: 12px;
+    color: #666666;
+    transition: transform 0.2s ease;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+details div {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 40px;
+    vertical-align: top;
+}
+
+details div span {
+    font-size: 13px;
+    color: #777777;
+    display: block;
+}
+
+details div p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #222222;
+}
+
+p.descripcion {
+    padding-top: 15px;
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   6. DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
+   ========================================== */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .producto {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin: 20px auto;
+    }
+
+    .galeria-pure-css {
+        flex-direction: column-reverse;
+    }
+
+    .miniaturas-laterales {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .contenedor-imagenes {
+        height: 250px;
+    }
+
+    details div {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

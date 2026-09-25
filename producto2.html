@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray-Ban Hexagonal</title>
+    <link rel="stylesheet" href="productos.css"> 
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">&#x1F453 OptiStyle</div>
+        <nav class="nav">
+            <a href="#">Inicio</a>
+            <a href="index.html">Catálogo</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Contacto</a>
+        </nav>    
+    </header>
+
+    <!-- Contenedor principal en 2 columnas -->
+    <main class="producto">
+
+        <!-- Columna 1: Galería de Imágenes -->
+        <section class="imagen-producto">
+            <div class="galeria-pure-css">
+                <!-- Controles Radio -->
+                <input type="radio" name="galeria" id="img-1" checked>
+                <input type="radio" name="galeria" id="img-2">
+                <input type="radio" name="galeria" id="img-3">
+                <input type="radio" name="galeria" id="img-4">
+                <input type="radio" name="galeria" id="img-5">
+
+                <!-- Columna Lateral de Miniaturas -->
+                <div class="miniaturas-laterales">
+                    <label for="img-1" class="thumb thumb-1">
+                        <img src="lentes2.jpg" alt="Vista 1">
+                    </label>
+                    <label for="img-2" class="thumb thumb-2">
+                        <img src="lentes2derecha.jpg" alt="Vista 2">
+                    </label>
+                    <label for="img-3" class="thumb thumb-3">
+                        <img src="lentes2diagonal.jpg" alt="Vista 3">
+                    </label>
+                    <label for="img-4" class="thumb thumb-4">
+                        <img src="lentes2frontal.jpg" alt="Vista 4">
+                    </label>
+                    <label for="img-5" class="thumb thumb-5">
+                        <img src="lentes2isquierda.jpg" alt="Vista 5">
+                    </label>
+                </div>
+
+                <!-- Visor Principal con Zonas de Zoom -->
+                <div class="contenedor-galeria-imagen">
+                    <div class="contenedor-imagenes">
+                        <!-- Cuadrícula 3x3 de celdas invisibles para capturar el mouse -->
+                        <div class="zona z-1"></div>
+                        <div class="zona z-2"></div>
+                        <div class="zona z-3"></div>
+                        <div class="zona z-4"></div>
+                        <div class="zona z-5"></div>
+                        <div class="zona z-6"></div>
+                        <div class="zona z-7"></div>
+                        <div class="zona z-8"></div>
+                        <div class="zona z-9"></div>
+
+                        <!-- Imágenes del producto -->
+                        <img src="lentes2.jpg" class="foto foto-1" alt="Vista Perfil">
+                        <img src="lentes2derecha.jpg" class="foto foto-2" alt="Vista Arriba">
+                        <img src="lentes2diagonal.jpg" class="foto foto-3" alt="Vista Derecha">
+                        <img src="lentes2frontal.jpg" class="foto foto-4" alt="Vista Diagonal">
+                        <img src="lentes2isquierda.jpg" class="foto foto-5" alt="Vista Izquierda">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Columna 2: Información del Producto -->
+        <section class="informacion">
+            <h1>RAY-BAN</h1>
+            <p class="modelo">Hexagonal - RB3548N</p>
+            <p class="codigo">Código: 8053672611649</p>
+            <p>&#10004; Satisfacción garantizada</p>
+            <p>&#10004; Garantía óptica y garantía estética</p>
+            <p>&#10004; Retira en 24 horas en tienda</p>
+            <hr>
+            <p class="precio-titulo">PRECIO:</p>
+            <p class="precio">S/.730.00</p>
+            <button class="Agregar-carrito">AGREGAR AL CARRITO</button>
+            <button class="boton-comprar">COMPRAR LENTES</button>
+        </section>
+
+    </main>
+
+    <!-- Sección Detalles -->
+    <section class="detalles">
+        <h2>Acerca de la montura</h2>
+        
+        <details open>
+            <summary>Detalles de la montura</summary>
+            <div class="datos">
+                <span>Material:</span>
+                <p>Metal</p>
+            </div>
+            <div>
+                <span>Forma:</span>
+                <p>Irregular</p>
+            </div>
+            <div>
+                <span>Género:</span>
+                <p>Unisex</p>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Detalles de las lunas</summary>
+            <div class="datos">
+                <span>Color:</span>
+                <p>Verde</p>
+            </div>
+            <div>
+                <span>Graduables:</span>
+                <p>Sí</p>
+            </div>
+            <div>
+                <span>Polarizados:</span>
+                <p>No</p>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Medidas de la montura</summary>
+            <div class="datos">
+                <span>Tamaño de las lunas:</span>
+                <p>51 mm</p>
+            </div>
+            <div>
+                <span>Ancho del puente:</span>
+                <p>20 mm</p>
+            </div>
+            <div>
+                <span>Largo de la varilla:</span>
+                <p>145 mm</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Acerca de Ray-Ban</summary>
+            <p class="descripcion">
+                Los lentes Ray-Ban son esenciales para quienes buscan estilo y calidad en
+                un solo accesorio. Como referente en la historia de la moda, Ray-Ban
+                ofrece diseños icónicos que nunca pasan de moda. En OptyStyle, puedes 
+                comprar gafas de sol y lentes oftálmicos Ray-Ban con entrega rápida en
+                pocos días. Descubre modelos populares como Aviator, Wayfarer y Clubmaster,
+                disponibles con lentes de polarizados, espejados o degradados, y una amplia
+                selección de monturas que se adaptan a todos los estilos.
+            </p>
+        </details>
+    </section>
+</body>
+</html>
